@@ -55,7 +55,9 @@ if [[ "${CI:-false}" == "true" ]]; then
   PLAYWRIGHT_ARGS+=("--retries=2")
 fi
 
-PLAYWRIGHT_ARGS+=("${EXTRA_ARGS[@]+"${EXTRA_ARGS[@]}"}")
+if [[ ${#EXTRA_ARGS[@]} -gt 0 ]]; then
+  PLAYWRIGHT_ARGS+=("${EXTRA_ARGS[@]}")
+fi
 
 # Run tests
 APP_URL="${APP_URL}" npx playwright "${PLAYWRIGHT_ARGS[@]}"

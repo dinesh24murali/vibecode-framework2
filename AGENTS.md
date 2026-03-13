@@ -141,3 +141,13 @@ When you clone this framework, find-and-replace these tokens:
 | `[[DEPLOYMENT_TARGET]]` | e.g. `AWS`, `GCP`, `Fly.io`, `Vercel` |
 | `[[TEAM_NAME]]` | Your team or company name |
 | `[[AUTH_STRATEGY]]` | e.g. `JWT`, `OAuth2`, `Session` |
+| `[[UI_LIBRARY]]` | e.g. `shadcn/ui`, `Material UI`, `Tailwind`, `none` |
+| `[[CODEGEN_COMMAND]]` | Command to regenerate frontend API client from OpenAPI spec |
+| `[[CI_CD_TOOL]]` | e.g. `GitHub Actions`, `GitLab CI`, `CircleCI` |
+| `[[CI_TEST_COMMAND]]` | e.g. `npm test`, `pytest`, `go test ./...` |
+| `[[CI_LINT_COMMAND]]` | e.g. `npm run lint`, `ruff check .`, `golangci-lint run` |
+| `[[REPO_URL]]` | Full URL of the git repository |
+| `[[APP_PORT]]` | Local dev server port, e.g. `3000`, `8080` |
+| `[[STAGING_URL]]` | Staging environment URL |
+| `[[PROD_URL]]` | Production URL |
+| `[[PROJECT_START_DATE]]` | Date project was started (YYYY-MM-DD) |

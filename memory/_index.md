@@ -5,7 +5,7 @@
 
 | File | Domain | Summary |
 |------|--------|---------|
-| *(none yet — add entries as memory files are created)* | | |
+| `memory/project.md` | project | Stack, environments, key decisions, open questions |
 
 ---
 

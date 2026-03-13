@@ -1,4 +1,4 @@
-.PHONY: scaffold verify adr task help
+.PHONY: scaffold verify adr task check-env init help
 
 ## scaffold: Create the initial project structure (run once after cloning)
 scaffold:
@@ -31,6 +31,18 @@ task:
 	@cp tasks/_template.md "tasks/active/$(NAME).md"; \
 	 echo "Created tasks/active/$(NAME).md"
 	@echo "Next: ask your AI tool to write tasks/active/$(NAME).scratch.md before coding"
+
+## check-env: Validate .env has all required vars from .env.example
+check-env:
+	@bash verify/scripts/check-env.sh
+
+## init: List all unreplaced [[PLACEHOLDER]] tokens in the repo (run after cloning)
+init:
+	@echo "Scanning for unreplaced [[PLACEHOLDER]] tokens..."
+	@echo ""
+	@git ls-files | xargs grep -rn '\[\[' --include="*.md" --include="*.yml" --include="*.yaml" --include="*.sh" --include="*.ts" --include="*.json" 2>/dev/null | grep -v Binary || echo "✓ No unreplaced placeholders found"
+	@echo ""
+	@echo "Replace each token, then re-run 'make init' to verify."
 
 ## help: Show this help
 help:
