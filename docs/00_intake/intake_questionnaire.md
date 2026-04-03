@@ -76,68 +76,96 @@
 
 ---
 
-## 5. Authentication & Authorization
+## 5. Design & Branding
 
-**5.1 Auth strategy:**
+**5.1 Primary brand color:**
+`[[BRAND_COLOR_PRIMARY]]`  (e.g. `#2563EB`, "a warm coral", "open to suggestion")
+
+**5.2 Secondary / accent color:**
+`[[BRAND_COLOR_SECONDARY]]`  (e.g. `#F59E0B`, "muted teal", "none")
+
+**5.3 Desired visual aesthetic:**
+`[[DESIGN_AESTHETIC]]`  (e.g. minimal, bold, playful, corporate, luxury, brutalist)
+
+**5.4 Heading font preference:**
+`[[FONT_HEADING]]`  (e.g. Inter, Playfair Display, "geometric sans", "open to suggestion")
+
+**5.5 Body font preference:**
+`[[FONT_BODY]]`  (e.g. Inter, Lato, "readable serif", "same as heading")
+
+**5.6 Monospace font preference:**
+`[[FONT_MONO]]`  (e.g. JetBrains Mono, Fira Code, "any", "none needed")
+
+**5.7 Font source:**
+`[[FONT_SOURCE]]`  (Google Fonts | Adobe Fonts | self-hosted | system stack)
+
+**5.8 Dark mode requirement:**
+`[[DARK_MODE]]`  (yes — required | no | optional — user toggle)
+
+---
+
+## 6. Authentication & Authorization
+
+**6.1 Auth strategy:**
 `[[AUTH_STRATEGY]]`  (e.g. JWT, OAuth2 + JWT, Session cookies, Passkeys)
 
-**5.2 OAuth providers (if any):**
+**6.2 OAuth providers (if any):**
 (e.g. Google, GitHub, none)
 
-**5.3 Authorization model:**
+**6.3 Authorization model:**
 (e.g. RBAC with roles: admin/user, simple owner-based, none)
 
 ---
 
-## 6. Deployment & Infrastructure
+## 7. Deployment & Infrastructure
 
-**6.1 Deployment target:**
+**7.1 Deployment target:**
 `[[DEPLOYMENT_TARGET]]`  (e.g. AWS ECS, GCP Cloud Run, Fly.io, Vercel + Railway)
 
-**6.2 Containerized?**
+**7.2 Containerized?**
 (Yes — Docker / Docker Compose / Kubernetes | No)
 
-**6.3 CI/CD preference:**
+**7.3 CI/CD preference:**
 (e.g. GitHub Actions, GitLab CI, CircleCI, none)
 
-**6.4 Environments needed:**
+**7.4 Environments needed:**
 (e.g. dev, staging, prod)
 
 ---
 
-## 7. Scale & Non-Functional Requirements
+## 8. Scale & Non-Functional Requirements
 
-**7.1 Expected users at launch:**
-
-
-**7.2 Expected peak requests/second:**
+**8.1 Expected users at launch:**
 
 
-**7.3 Data sensitivity:**
+**8.2 Expected peak requests/second:**
+
+
+**8.3 Data sensitivity:**
 (e.g. PII, financial data, public data only)
 
-**7.4 Compliance requirements:**
+**8.4 Compliance requirements:**
 (e.g. GDPR, HIPAA, SOC2, none)
 
-**7.5 Uptime target:**
+**8.5 Uptime target:**
 (e.g. 99.9%, best-effort)
 
 ---
 
-## 8. Testing Expectations
+## 9. Testing Expectations
 
-**8.1 Minimum unit test coverage target:**
+**9.1 Minimum unit test coverage target:**
 (e.g. 80%, none for now)
 
-**8.2 E2e test tool preference:**
+**9.2 E2e test tool preference:**
 (e.g. Playwright, Cypress, none)
 
-**8.3 Contract testing:**
+**9.3 Contract testing:**
 (Yes — generate from OpenAPI spec | No)
 
 ---
 
-## 9. Open Questions
+## 10. Open Questions
 
 List any unknowns or decisions not yet made:
 

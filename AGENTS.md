@@ -151,3 +151,11 @@ When you clone this framework, find-and-replace these tokens:
 | `[[STAGING_URL]]` | Staging environment URL |
 | `[[PROD_URL]]` | Production URL |
 | `[[PROJECT_START_DATE]]` | Date project was started (YYYY-MM-DD) |
+| `[[BRAND_COLOR_PRIMARY]]` | Primary brand color hex, e.g. `#2563EB` |
+| `[[BRAND_COLOR_SECONDARY]]` | Secondary/accent color hex or description |
+| `[[DESIGN_AESTHETIC]]` | e.g. `minimal`, `bold`, `playful`, `corporate` |
+| `[[FONT_HEADING]]` | Heading font name or style preference |
+| `[[FONT_BODY]]` | Body font name or style preference |
+| `[[FONT_MONO]]` | Monospace font name |
+| `[[FONT_SOURCE]]` | `Google Fonts`, `Adobe Fonts`, `self-hosted`, `system` |
+| `[[DARK_MODE]]` | `yes`, `no`, or `optional` |

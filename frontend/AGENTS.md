@@ -77,3 +77,4 @@
 - Read `memory/auth.md` before touching auth-related components
 - All new pages need a route defined and an e2e test in `tests/e2e/`
 - Do not import from `backend/` — all data flows through the API layer
+- Read `docs/02_outputs/07_design_system.md` before modifying any styles, themes, or design tokens. Do not introduce colors or fonts not defined there.
