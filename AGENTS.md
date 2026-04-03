@@ -90,6 +90,15 @@ These rules apply regardless of which AI tool is in use.
 - Never manually write API client code that duplicates what the spec defines
 - If the spec changes, regenerate the frontend client before implementing
 
+### 3.8 Design Integration
+- For any frontend task, check `docs/02_outputs/05_design_registry.md` for the feature's Figma frames
+- Also check the task file's `Skip design check` field — the task-level setting overrides the registry
+- **If skip = Yes:** implement from task requirements alone; skip all design review and visual QA steps
+- **If skip = No:** load the Figma frame in the scratch file (Step 0) before writing any component code; run `verify/figma-qa.md` after the screen is built
+- Never deviate from the Figma design without recording the reason in the task file's Design notes
+- To extract project-wide design tokens from Figma, use `docs/01_prompts/08_design_token_extraction.prompt.md`
+- To cross-check Figma against requirements before dev starts, use `docs/01_prompts/09_design_requirements_validation.prompt.md`
+
 ---
 
 ## 4. File Map

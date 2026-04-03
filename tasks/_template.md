@@ -31,6 +31,16 @@
 
 <!-- List the files you expect to create or modify. AI: fill this in the scratch file. -->
 
+## Design
+
+<!-- For frontend tasks only. Check docs/02_outputs/05_design_registry.md first. -->
+
+- **Skip design check:** No <!-- Set to "Yes" to skip Figma review and implement from requirements only -->
+- **Figma URL:** <!-- Direct link to the specific Figma frame(s), or "N/A" -->
+- **Figma frame names:** <!-- Exact frame names as they appear in Figma, or "N/A" -->
+- **Design notes:** <!-- Deviations from design, open questions, or designer clarifications -->
+- **Design reviewed:** [ ] <!-- Check after AI describes the Figma frame in the scratch file -->
+
 ## Notes
 
 <!-- Any constraints, gotchas, or context the implementer should know.

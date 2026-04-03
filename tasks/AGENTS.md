@@ -30,6 +30,13 @@ tasks/active/<task-name>.scratch.md
 ```
 
 The scratch file must contain:
+
+**Step 0 — Design review (frontend tasks only):**
+Check the task's `Skip design check` field.
+- If **Yes** — skip to Step 1. Implement entirely from requirements.
+- If **No** — load the Figma frame(s) listed in the task's Design section using the Figma MCP server. Describe what you see: screens, components, states, interactions. Record this under a `## Design Review` heading. If the design contradicts task requirements, flag the conflict before proceeding.
+
+**Steps 1–5 (all tasks):**
 1. **Plan** — numbered steps for implementation
 2. **Files to change** — list every file that will be created or modified
 3. **Uncertainties** — open questions or things to verify before coding
