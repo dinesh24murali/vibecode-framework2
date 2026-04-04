@@ -64,28 +64,72 @@ For every feature or bugfix:
 
 ---
 
+## Starting a New Product Phase
+
+When v1 is shipped and a major new feature set is planned:
+
+```bash
+# 1. Tag v1 in git
+git tag v1.0.0
+
+# 2. Create phase directories
+make phase-scaffold PHASE=2
+
+# 3. Drop external feature documents (PDFs, Markdown specs, etc.)
+cp ~/my-feature-spec.md docs/00_intake/phase2_attachments/
+
+# 4. Fill the phase intake questionnaire
+open docs/00_intake/phase_intake_questionnaire.md
+
+# 5. Generate delta documents — work through in order (01 → 05)
+open docs/03_phase_prompts/
+# For each prompt: fill [[PLACEHOLDER]] tokens → paste into AI tool → save to docs/02_outputs/phase2/
+
+# 6. Create ADRs for new architectural decisions
+make adr SLUG=phase2-my-decision
+
+# 7. Update memory files (append — never replace)
+
+# 8. Begin development tasks
+make phase-task PHASE=2 NAME=first-feature
+```
+
+| Phase Prompt | Output | Purpose |
+|--------------|--------|---------|
+| `01_prd_delta.prompt.md` | `phase2/01_prd_delta.md` | New/changed requirements only |
+| `02_functional_spec_delta.prompt.md` | `phase2/02_functional_spec_delta.md` | New user flows and screens |
+| `03_tech_architecture_delta.prompt.md` | `phase2/03_tech_architecture_delta.md` | Architecture changes and ADR candidates |
+| `04_api_spec_additions.prompt.md` | `phase2/04_api_spec_additions.yaml` | New/modified API endpoints (YAML fragment) |
+| `05_implementation_plan_phase.prompt.md` | `phase2/05_implementation_plan.md` | Ordered task list for this phase |
+
+> **Feeding in external docs:** Drop them in `docs/00_intake/phase2_attachments/`. Claude Code reads them directly; web AI tools get the content pasted inline via the `[[PHASE_ATTACHMENTS]]` token.
+
+---
+
 ## Project Structure
 
 ```
 .
 ├── docs/
-│   ├── 00_intake/          # Fill this first
-│   ├── 01_prompts/         # Paste into any AI tool
-│   └── 02_outputs/         # AI-generated docs land here
-├── adr/                    # Architecture Decision Records
-├── memory/                 # AI memory / domain knowledge
+│   ├── 00_intake/               # Questionnaires + external feature doc attachments
+│   ├── 01_prompts/              # v1 prompts — paste into any AI tool
+│   ├── 02_outputs/              # v1 AI-generated docs
+│   │   └── phase2/             # Phase 2 delta docs land here
+│   └── 03_phase_prompts/        # Phase 2+ prompts (delta docs only)
+├── adr/                         # Architecture Decision Records
+├── memory/                      # AI memory / domain knowledge
 ├── tasks/
-│   ├── active/             # In-progress tasks + scratch files
-│   └── done/               # Completed tasks
+│   ├── active/                  # In-progress tasks + scratch files
+│   └── done/                    # Completed tasks
 ├── tests/
-│   ├── e2e/                # Playwright end-to-end tests
-│   └── contract/           # OpenAPI contract tests
-├── verify/                 # Verification scripts and playbooks
-├── backend/                # Backend source code
-├── frontend/               # Frontend source code
-├── AGENTS.md               # Master AI instructions (all tools read this)
-├── CLAUDE.md               # Redirects to AGENTS.md
-└── .cursorrules            # Redirects to AGENTS.md
+│   ├── e2e/                     # Playwright end-to-end tests
+│   └── contract/                # OpenAPI contract tests
+├── verify/                      # Verification scripts and playbooks
+├── backend/                     # Backend source code
+├── frontend/                    # Frontend source code
+├── AGENTS.md                    # Master AI instructions (all tools read this)
+├── CLAUDE.md                    # Redirects to AGENTS.md
+└── .cursorrules                 # Redirects to AGENTS.md
 ```
 
 ---
@@ -106,11 +150,14 @@ This framework is **provider-agnostic**. The master instructions live in `AGENTS
 ## Makefile Commands
 
 ```bash
-make scaffold   # Create directories (run once)
-make verify     # Run e2e + DOM checks
-make adr SLUG=my-decision   # Create a new ADR
-make task NAME=my-feature   # Create a new task file
-make help       # Show all commands
+make scaffold                        # Create directories (run once)
+make verify                          # Run e2e + DOM checks
+make adr SLUG=my-decision            # Create a new ADR
+make task NAME=my-feature            # Create a new v1 task file
+make phase-scaffold PHASE=2          # Create phase 2 directories
+make phase-task PHASE=2 NAME=feat    # Create a phase-prefixed task file
+make phase-init PHASE=2              # Scan for unreplaced placeholders in phase docs
+make help                            # Show all commands
 ```
 
 ---

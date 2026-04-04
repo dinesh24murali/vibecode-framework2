@@ -35,6 +35,50 @@ For every feature or bugfix:
 5. Run `verify/scripts/run-e2e.sh` (frontend changes) or relevant tests
 6. Move task file to `tasks/done/`
 
+### Starting a New Product Phase (Phase 2+)
+
+When v1 is complete and a major new feature set is planned, follow this workflow:
+
+#### Step 1 — Tag v1 and scaffold
+```bash
+git tag v1.0.0
+make phase-scaffold PHASE=2
+```
+
+#### Step 2 — Ingest external feature documents
+Drop any external docs (PDFs, Markdown, specs, etc.) into `docs/00_intake/phase2_attachments/` and commit them.
+
+#### Step 3 — Fill the phase intake questionnaire
+Open `docs/00_intake/phase_intake_questionnaire.md` and fill all sections.
+
+#### Step 4 — Generate phase documents (work through in order)
+
+| Prompt | Save output to |
+|--------|---------------|
+| `docs/03_phase_prompts/01_prd_delta.prompt.md` | `docs/02_outputs/phase2/01_prd_delta.md` |
+| `docs/03_phase_prompts/02_functional_spec_delta.prompt.md` | `docs/02_outputs/phase2/02_functional_spec_delta.md` |
+| `docs/03_phase_prompts/03_tech_architecture_delta.prompt.md` | `docs/02_outputs/phase2/03_tech_architecture_delta.md` |
+| `docs/03_phase_prompts/04_api_spec_additions.prompt.md` | `docs/02_outputs/phase2/04_api_spec_additions.yaml` |
+| `docs/03_phase_prompts/05_implementation_plan_phase.prompt.md` | `docs/02_outputs/phase2/05_implementation_plan.md` |
+
+For `[[PHASE_ATTACHMENTS]]` in each prompt:
+- **Claude Code / Cursor**: tell the AI to read `docs/00_intake/phase2_attachments/` directly
+- **Web AI tools**: paste the file contents inline
+
+Each prompt reads the v1 docs as context — never duplicate v1 content, only add/change.
+
+#### Step 5 — Create ADRs and update memory
+- For each ADR candidate in the architecture delta: `make adr SLUG=phase2-<decision>`
+- Append a `## Phase 2 Additions` section to `memory/project.md`
+- Create new domain memory files if new domains are introduced; update `memory/_index.md`
+
+#### Step 6 — Begin the development loop (same as Phase 2)
+```bash
+make phase-task PHASE=2 NAME=first-feature
+# Creates tasks/active/p2-first-feature.md
+# AI writes scratch file → implements → updates CHANGELOG → moves to tasks/done/
+```
+
 ---
 
 ## 3. Universal Rules — All AI Tools Must Follow
@@ -97,8 +141,12 @@ These rules apply regardless of which AI tool is in use.
 | Path | Purpose |
 |------|---------|
 | `docs/00_intake/` | Intake questionnaire — fill this first |
+| `docs/00_intake/phase_intake_questionnaire.md` | Phase intake — fill before running phase prompts |
+| `docs/00_intake/phaseN_attachments/` | External feature docs for phase N — drop files here |
 | `docs/01_prompts/` | Prompt files — paste into any AI tool |
 | `docs/02_outputs/` | AI-generated docs (PRD, arch, API spec, etc.) |
+| `docs/02_outputs/phaseN/` | AI-generated delta docs for phase N |
+| `docs/03_phase_prompts/` | Phase-specific prompt files (delta docs only) |
 | `adr/` | Architecture Decision Records |
 | `memory/` | Persistent AI memory files (domain knowledge) |
 | `tasks/active/` | In-progress task files + scratch files |
@@ -116,6 +164,7 @@ Each folder has its own `AGENTS.md` with folder-specific instructions.
 ## 5. Folder-Level AGENTS.md Files
 
 - `docs/AGENTS.md` — docs folder purpose and ordering
+- `docs/03_phase_prompts/AGENTS.md` — phase prompt ordering and delta doc rules
 - `adr/AGENTS.md` — ADR creation rules and naming
 - `memory/AGENTS.md` — memory maintenance protocol
 - `tasks/AGENTS.md` — task workflow and scratch file convention

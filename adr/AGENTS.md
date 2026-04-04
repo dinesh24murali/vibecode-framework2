@@ -46,3 +46,27 @@ This copies `adr/template.md` to `adr/NNNN-my-decision.md`.
 - If an implementation contradicts an ADR, flag it and ask for guidance
 - Do not modify `Accepted` ADRs — create a new one that supersedes the old one
 - Update the status field if a decision changes
+
+---
+
+## Phase-Scoped ADRs
+
+ADR numbering is **global** — it never resets per phase. Phase 2+ ADRs continue the same sequence (e.g. v1 ends at ADR-0006, Phase 2 starts at ADR-0007).
+
+For Phase 2+ ADRs, add a `Phase:` field to the standard header:
+
+```markdown
+# ADR-NNNN: [Short Title]
+
+**Status:** Proposed | Accepted | Deprecated | Superseded by ADR-NNNN
+**Date:** YYYY-MM-DD
+**Phase:** 2
+**Deciders:** [Names or "team"]
+```
+
+To supersede a v1 ADR in a later phase:
+1. Create a new ADR (next number in sequence) with `Phase: N`
+2. In the new ADR, reference the old one in `## References`
+3. Update the old ADR's `Status` field to `Superseded by ADR-NNNN`
+
+See `adr/phase_adr_guide.md` for the full multi-phase ADR protocol.

@@ -56,3 +56,34 @@
 ## Open Questions
 
 - *(add unresolved questions here; remove when answered)*
+
+---
+
+## Phase Tracking
+
+| Phase | Name | Status | Start Date | Docs Location |
+|-------|------|--------|------------|---------------|
+| v1 | Initial Release | Complete | `[[PROJECT_START_DATE]]` | `docs/02_outputs/` |
+| Phase 2 | *(fill in)* | Planning / Active / Complete | | `docs/02_outputs/phase2/` |
+
+---
+
+## Phase 2 Additions
+
+> AI: append here when Phase 2 begins. Update the Phase Tracking table above.
+
+### New Key Architectural Decisions
+
+| Decision | ADR | Summary |
+|----------|-----|---------|
+| | | |
+
+### New External Services
+
+| Service | Purpose | Phase introduced |
+|---------|---------|-----------------|
+| | | |
+
+### New Conventions (Phase 2+)
+
+- *(add conventions that differ from or extend v1)*
